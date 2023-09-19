@@ -26,10 +26,10 @@ public class UserController {
 //        return ResponseEntity.ok().body(userService.getAllUser());
 //    }
 
-    @GetMapping("/users/{id}")
-    public ResponseEntity < User > getUserById(@PathVariable Long id) throws CipherException, IOException {
-        return ResponseEntity.ok().body(userService.getUserById(id));
-    }
+//    @GetMapping("/users/{id}")
+//    public ResponseEntity < User > getUserById(@PathVariable String id) throws CipherException, IOException {
+//        return ResponseEntity.ok().body(userService.getUserById(id));
+//    }
 
     @GetMapping("/users/{userName}")
     public ResponseEntity < User > getUserByName(@PathVariable String userName) throws CipherException, IOException {
@@ -42,13 +42,13 @@ public class UserController {
     }
 
     @PutMapping("/users/{id}")
-    public ResponseEntity < User > updateUser(@PathVariable long id, @RequestBody User user) {
+    public ResponseEntity < User > updateUser(@PathVariable String id, @RequestBody User user) {
         user.setId(id);
         return ResponseEntity.ok().body(this.userService.updateUser(user));
     }
 
     @DeleteMapping("/users/{id}")
-    public HttpStatus deleteUser(@PathVariable long id) {
+    public HttpStatus deleteUser(@PathVariable String id) {
         this.userService.deleteUser(id);
         return HttpStatus.OK;
     }
