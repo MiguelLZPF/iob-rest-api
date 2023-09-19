@@ -32,9 +32,6 @@ public class SecurityConfig {
     private final JwtAuthenticationFilter jwtAuthFilter;
 
     @Autowired
-    private UserDetailsService userDetailsService;
-
-    @Autowired
     private JwtUtil jwtUtil;
 
     private static final String[] AUTH_WHITELIST = {
