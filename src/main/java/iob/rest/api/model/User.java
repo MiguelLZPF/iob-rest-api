@@ -22,6 +22,7 @@ public class User {
     private String password;
 
     private String credentials;
+    private String account;
 
     public void setId(String id) {
         this.id = id;
@@ -37,5 +38,8 @@ public class User {
 
     public void setCredentials(String path) {
         this.credentials = path;
+    }
+    public void setAccount(String account) {
+        this.account = account;
     }
 }

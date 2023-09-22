@@ -1,4 +1,4 @@
-package iob.rest.api.repository;
+package iob.rest.api.model;
 
 import io.reactivex.Flowable;
 import java.math.BigInteger;
