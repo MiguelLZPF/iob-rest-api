@@ -36,7 +36,8 @@ public class UserController {
     }
 
     @PostMapping("/users")
-    public ResponseEntity<User> createUser(@RequestBody User user) throws InvalidAlgorithmParameterException, CipherException, NoSuchAlgorithmException, IOException, NoSuchProviderException, URISyntaxException {
+    public ResponseEntity<User> createUser(@RequestBody User user) throws InvalidAlgorithmParameterException,
+            CipherException, NoSuchAlgorithmException, IOException, NoSuchProviderException, URISyntaxException {
         return ResponseEntity.ok().body(this.userService.createUser(user));
     }
 

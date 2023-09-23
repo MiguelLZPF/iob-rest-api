@@ -1,5 +1,6 @@
 package iob.rest.api.service;
 
+import iob.rest.api.model.AccountDetailResponse;
 import iob.rest.api.model.TxExecutionResult;
 import iob.rest.api.model.User;
 
@@ -8,7 +9,7 @@ import java.math.BigInteger;
 public interface AccountService {
     TxExecutionResult deposit(User from, String to, BigInteger amount) throws Exception;
 
-    Boolean transfer(String from, String to, BigInteger amount);
+    TxExecutionResult transfer(User from, String to, BigInteger amount) throws Exception;
 
-    Boolean getDetails(String account);
+    AccountDetailResponse getDetails(User user, String account) throws Exception;
 }

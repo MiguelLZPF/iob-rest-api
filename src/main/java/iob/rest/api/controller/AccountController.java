@@ -1,5 +1,6 @@
 package iob.rest.api.controller;
 
+import iob.rest.api.model.AccountDetailResponse;
 import iob.rest.api.model.TxExecutionResult;
 import iob.rest.api.model.User;
 import iob.rest.api.service.AccountService;
@@ -11,6 +12,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigInteger;
+import java.util.Objects;
 
 @RestController
 @RequestMapping("/accounts")
@@ -23,25 +25,39 @@ public class AccountController {
     @PostMapping("/{account}")
     public ResponseEntity<TxExecutionResult> deposit(
             @PathVariable String account,
-            @RequestParam("amount"
-            ) BigInteger amount) throws Exception {
+            @RequestParam("amount") BigInteger amount
+    ) throws Exception {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.getUserByName(auth.getName());
         return ResponseEntity.ok().body(accountService.deposit(user, account, amount));
     }
 
     @PutMapping("/{account}")
-    public Boolean transfer(@PathVariable String account, BigInteger amount) {
-        return true;
+    public ResponseEntity<TxExecutionResult> transfer(
+            @PathVariable String account,
+            @RequestParam("amount") BigInteger amount
+    ) throws Exception {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = userService.getUserByName(auth.getName());
+        return ResponseEntity.ok().body(accountService.transfer(user, account, amount));
     }
 
     @GetMapping("/{account}")
-    public Boolean getDetails(@PathVariable String account) {
-        return true;
+    public ResponseEntity<AccountDetailResponse> getDetails(@PathVariable String account) throws Exception {
+        System.out.println("GET to /accounts/" + account + " received. Processing...");
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = userService.getUserByName(auth.getName());
+        if (Objects.equals(account, "mine")) {
+            account = user.getAccount();
+        }
+        return ResponseEntity.ok(accountService.getDetails(user, account));
     }
 
-    @GetMapping("/mine")
-    public Boolean getDetails() {
-        return true;
-    }
+//    @GetMapping("/mine")
+//    public ResponseEntity<AccountDetailResponse> getDetails() throws Exception {
+//        System.out.println("GET to /accounts/mine received. Processing...");
+//        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+//        User user = userService.getUserByName(auth.getName());
+//        return ResponseEntity.ok(accountService.getDetails(user, user.getAccount()));
+//    }
 }
