@@ -10,11 +10,11 @@ import java.net.URISyntaxException;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.NoSuchAlgorithmException;
 import java.security.NoSuchProviderException;
-import java.util.List;
 
 public interface UserService extends UserDetailsService {
 
     UserDetails loadUserByUsername(String username);
+
     void saveUser(User user);
 
     User createUser(User user) throws InvalidAlgorithmParameterException, CipherException, NoSuchAlgorithmException, IOException, NoSuchProviderException, URISyntaxException;
