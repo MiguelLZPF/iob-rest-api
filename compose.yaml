@@ -13,5 +13,28 @@ services:
       # - ./db/init.sql:/docker-entrypoint-initdb.d/create_tables.sql
     ports:
       - '27017:27017'
-    # expose:
-    #   - 27017
+
+  blockchain:
+    image: trufflesuite/ganache:v7.9.1
+    container_name: ganache
+    ports:
+      - "8545:8545"
+
+    volumes:
+      - ./.docker-volumes/ganache:/ganache_data
+    command:
+      - --chain.asyncRequestProcessing=false
+      - --chain.chainId=1337
+      - --chain.hardfork=berlin
+      - --database.dbPath=/app/.db
+      - --logging.debug=false
+      - --logging.quiet=false
+      - --logging.verbose=false
+      - --miner.blockTime=0
+      - --miner.blockGasLimit=0x1C9C380
+      - --miner.defaultGasPrice=0
+      - --wallet.mnemonic=myth like bonus scare problem client lizard pioneer submit female collect
+      - --wallet.totalAccounts=10
+      - --wallet.lock=true
+      - --wallet.passphrase=PaSsW0Rd_6660
+      - --wallet.accountKeysPath=/app/.account_keys
