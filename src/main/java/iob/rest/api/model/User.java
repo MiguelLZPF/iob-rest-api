@@ -2,7 +2,6 @@ package iob.rest.api.model;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
-
 import lombok.Getter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
@@ -22,6 +21,7 @@ public class User {
     private String password;
 
     private String credentials;
+    private String account;
 
     public void setId(String id) {
         this.id = id;
@@ -37,5 +37,9 @@ public class User {
 
     public void setCredentials(String path) {
         this.credentials = path;
+    }
+
+    public void setAccount(String account) {
+        this.account = account;
     }
 }
