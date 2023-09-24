@@ -52,12 +52,4 @@ public class AccountController {
         }
         return ResponseEntity.ok(accountService.getDetails(user, account));
     }
-
-//    @GetMapping("/mine")
-//    public ResponseEntity<AccountDetailResponse> getDetails() throws Exception {
-//        System.out.println("GET to /accounts/mine received. Processing...");
-//        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-//        User user = userService.getUserByName(auth.getName());
-//        return ResponseEntity.ok(accountService.getDetails(user, user.getAccount()));
-//    }
 }
