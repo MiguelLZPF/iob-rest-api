@@ -1,5 +1,9 @@
 package iob.rest.api.controller;
 
+import io.swagger.v3.oas.annotations.enums.SecuritySchemeType;
+import io.swagger.v3.oas.annotations.security.SecurityScheme;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import io.swagger.v3.oas.annotations.security.OAuthFlow;
 import iob.rest.api.model.LoginRequest;
 import iob.rest.api.service.UserService;
 import iob.rest.api.utils.JwtUtil;
@@ -18,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 //@RequestMapping("/login")
 @RequiredArgsConstructor
+@Tag(name = "Auth", description = "Login Auth API")
 public class LoginController {
     @Autowired
     private AuthenticationManager authenticationManager;

@@ -5,6 +5,7 @@ import iob.rest.api.model.User;
 import iob.rest.api.repository.UserRepository;
 import iob.rest.api.utils.Blockchain;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
